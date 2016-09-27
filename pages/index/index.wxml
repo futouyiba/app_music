@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <!--<text class="userinfo-nickname">{{userInfo.nickName}}</text>-->
+  </view>
+  <view class="searchMusci">
+    <input bindinput="inputC"  maxlength="10" placeholder="输入歌名或歌手" />
+  </view>
+  <button class="scBtn" bindtap="searchMusci">搜索音乐</button>
+  <scroll-view class="musicscroll" scroll-y="true" wx:if="{{ hasMusic }}">
+    <view class="musiclist" bindtap="playThis" wx:for="{{ musicList.info }}" wx:for-item="music" data-hash="{{ music.hash }}">{{ music.songname }} - {{ music.singername }}</view>
+  </scroll-view>
+  <view class="playshow" wx:if="{{ isPlay }}">
+    <audio bindtap="bindPlayMusic" poster="{{ musicImg }}" name="{{ musicInfo.fileName }}" author="{{ musicInfo.fileName }}" src="{{ musicInfo.url }}" action="{{ action }}" controls></audio>
+  </view>
+</view>
